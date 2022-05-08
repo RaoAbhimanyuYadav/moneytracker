@@ -1,10 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./history.css";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
 const History = (props) => {
+  const handleClear = () => {
+    localStorage.removeItem("moneytracker");
+    props.clearStore();
+  };
+
   return (
     <div className="history">
-      <h3>History</h3>
+      <div className="icon-title">
+        <h3>History</h3>
+        <ClearAllIcon onClick={handleClear} />
+      </div>
       <ul>
         {!props.state.length && <div>No Transition</div>}
         {props.state &&
@@ -29,4 +38,11 @@ const History = (props) => {
 const mapStateToProps = (state) => {
   return { state: state.transactions };
 };
-export default connect(mapStateToProps)(History);
+const mapReducerToProps = (dispatch) => {
+  return {
+    clearStore: () => {
+      dispatch({ type: "CLEAR" });
+    },
+  };
+};
+export default connect(mapStateToProps, mapReducerToProps)(History);

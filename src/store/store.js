@@ -1,13 +1,19 @@
 const localState = JSON.parse(localStorage.getItem("moneytracker"));
-console.log(localState);
 
-const initailValue = {
-  transactions: [...localState.transactions],
-  amount: localState.amount,
-  income: localState.income,
-  expense: localState.expense,
+let initailValue = {
+  transactions: [],
+  amount: 0,
+  income: 0,
+  expense: 0,
 };
-
+if (localState) {
+  initailValue = {
+    transactions: [...localState.transactions] || [],
+    amount: localState.amount || 0,
+    income: localState.income || 0,
+    expense: localState.expense || 0,
+  };
+}
 const reducer = (state = initailValue, action) => {
   if (action.type === "ADD_TRAN") {
     let storedAmount = state.amount + action.transaction.amount;
@@ -30,6 +36,14 @@ const reducer = (state = initailValue, action) => {
     };
     localStorage.setItem("moneytracker", JSON.stringify(updatedState));
     return updatedState;
+  }
+  if (action.type === "CLEAR") {
+    return {
+      transactions: [],
+      amount: 0,
+      income: 0,
+      expense: 0,
+    };
   }
 
   return state;

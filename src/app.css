@@ -16,10 +16,12 @@ body{
 h1{
     text-align: center;
     padding: 20px;
+   
 }
 .balance{
     padding: 5px 10px;
     font-weight: bolder;
+    flex-grow: 2;
 }
 .balance p{
     font-size: 25px;
@@ -64,3 +66,14 @@ h1{
 .credit-color{
     background-color: rgb(88, 211, 102);
 }
+#root > div > div:nth-child(1) > div.icon-title > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#root > div > div:nth-child(1) > div.icon-title > div:nth-child(2) > svg{
+    margin: 0;
+}
+

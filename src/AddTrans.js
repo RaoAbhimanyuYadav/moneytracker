@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./addtrans.css";
+import CloseIcon from "@mui/icons-material/Close";
+
 const AddTrans = (props) => {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
@@ -28,7 +30,15 @@ const AddTrans = (props) => {
   };
   return (
     <div className="add-tansaction">
-      <h3>Add new transaction</h3>
+      <div className="icon-title">
+        <h3>Add new transaction</h3>
+        <CloseIcon
+          onClick={() => {
+            props.setAddPanel(false);
+          }}
+        />
+      </div>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="Text">Text</label>
         <input placeholder="Enter text..." name="Text" value={type} onChange={handleText} />
