@@ -21,7 +21,6 @@ const reducer = (state = initailValue, action) => {
     let newIncome = state.income;
     let newExpense = state.expense;
 
-    console.log(action.transaction.amount);
     if (action.transaction.color === "debit-color") {
       newExpense -= action.transaction.amount;
     } else {
