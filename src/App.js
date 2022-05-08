@@ -11,7 +11,7 @@ function App(props) {
         <div className="balance">
           <p>Your Balance</p>
           <p>
-            $<span>{props.amount}</span>
+            $<span>{props.amount.toFixed(2)}</span>
           </p>
         </div>
       </div>
@@ -19,13 +19,13 @@ function App(props) {
         <div className="income">
           <p>INCOME</p>
           <p>
-            $<span>{props.income}</span>
+            $<span>{props.income.toFixed(2)}</span>
           </p>
         </div>
         <div className="expense">
           <p>EXPENSE</p>
           <p>
-            $<span>{props.expense}</span>
+            $<span>{props.expense.toFixed(2)}</span>
           </p>
         </div>
       </div>

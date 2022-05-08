@@ -9,8 +9,9 @@ const AddTrans = (props) => {
     setType(e.target.value.trim());
   };
   const handleAmount = (e) => {
-    setAmount(e.target.value.trim());
-    if (amount.substring(0, 1) === "-") {
+    let enteredAmount = +e.target.value;
+    setAmount(e.target.value);
+    if (enteredAmount < 0) {
       setColor("debit-color");
     } else {
       setColor("credit-color");
@@ -19,8 +20,8 @@ const AddTrans = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const key = new Date();
-    const transaction = { color, type, amount, key };
-    console.log(transaction);
+    const transaction = { color, type, amount: +amount, key };
+
     setAmount("");
     setType("");
     props.addTrans(transaction);
@@ -35,7 +36,7 @@ const AddTrans = (props) => {
           <p>Amount</p>
           <p>(negative - expense, positive - income)</p>
         </label>
-        <input name="Amount" placeholder="Enter amount..." value={amount} onChange={handleAmount} />
+        <input type="number" step={0.01} name="Amount" placeholder="Enter amount..." value={amount} onChange={handleAmount} />
         <button>Add transaction</button>
       </form>
     </div>
