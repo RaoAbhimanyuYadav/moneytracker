@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(234, 234, 234, 0.916);
+}
+
+.app{
+    min-width:400px;
+    
+}
+h1{
+    text-align: center;
+    padding: 20px;
+}
+.balance{
+    padding: 5px 10px;
+    font-weight: bolder;
+}
+.balance p{
+    font-size: 25px;
+}
+.counter{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px -7.9px black;
+}
+.income , .expense{
+    width: 100%;
+    padding: 10px;
+    font-weight: bolder;
+}
+.income{
+    border-right: 2px solid rgb(231, 231, 231);
+}
+
+#root > div > div:nth-child(1) > div > p:nth-child(1){
+    font-size: 20px;
+}
+#root > div > div:nth-child(1) > div > p:nth-child(2){
+    font-size: 30px;
+}
+#root > div > div.counter > div.income > p:nth-child(2){
+    font-size: 20px;
+    color: rgb(88, 211, 102);
+}
+#root > div > div.counter > div.expense > p:nth-child(2){
+    font-size: 20px;
+    color: red;
+}
+
+.debit-color{
+    background-color: red;
+}
+.credit-color{
+    background-color: rgb(88, 211, 102);
+}

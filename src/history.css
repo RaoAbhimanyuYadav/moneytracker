@@ -1,0 +1,39 @@
+.history{
+    padding: 10px;
+}
+h3{
+    margin: 10px 0;
+    padding: 4px 0;
+    border-bottom: 2px solid rgb(184, 184, 184);;
+    font-size: 20px;
+}
+.history ul{
+    list-style-type: none;
+}
+.history ul li{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* box-shadow: 2px 2px 15px -7.9px black; */
+    padding: 5px;
+    
+}
+.transition{
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 5px;
+    border-radius: 2px 0px 0px 2px;
+    margin-right: 0;
+    overflow: hidden;
+}
+.trans-color{
+    border-radius: 0px 2px 2px 0px;
+   background-color: aqua;
+   min-width: 10px;
+   padding: 5px ;
+   box-sizing: border-box;
+   position: relative;
+   
+}
