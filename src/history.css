@@ -37,6 +37,9 @@ svg{
     margin-right: 0;
     overflow: hidden;
 }
+.trans-type ,.trans-amount{
+    margin-top: 2px;
+}
 .trans-color{
     border-radius: 0px 2px 2px 0px;
    background-color: aqua;
@@ -45,4 +48,8 @@ svg{
    box-sizing: border-box;
    position: relative;
    
+}
+
+.transition > div:nth-child(2) > svg{
+    margin: 0;
 }
