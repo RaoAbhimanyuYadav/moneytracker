@@ -71,6 +71,23 @@ const reducer = (state = initailValue, action) => {
     localStorage.setItem("moneytracker", JSON.stringify(updatedState));
     return updatedState;
   }
+  if (action.type === "EDIT_TYPE") {
+    let trans = {};
+    let newTrans = state.transactions.filter((e) => {
+      if (e.key === action.key) {
+        trans = { ...e, type: action.value };
+      }
+      return e.key !== action.key;
+    });
+    newTrans = [...newTrans, trans];
+
+    const updatedState = {
+      ...state,
+      transactions: [...newTrans],
+    };
+    localStorage.setItem("moneytracker", JSON.stringify(updatedState));
+    return updatedState;
+  }
 
   return state;
 };

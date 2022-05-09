@@ -11,8 +11,15 @@ const History = (props) => {
   };
   const [editHistory, setEditHistory] = useState(false);
   const [idCheck, setIdCheck] = useState(null);
+  const [editTrans, setEditTrans] = useState(false);
+  const [editType, setEditType] = useState("");
   const handleEdit = (id) => {
-    console.log(id);
+    setEditTrans(true);
+  };
+  const handleSubmitEditTypeTrans = (e, key) => {
+    e.preventDefault();
+    props.editTypeStore(key, editType);
+    setEditTrans(false);
   };
   const handleDelete = (id) => {
     props.deleteStore(id);
@@ -39,12 +46,31 @@ const History = (props) => {
                     setEditHistory(false);
                   }}
                 >
-                  <div className="trans-type">{detail.type}</div>
+                  {!editTrans && <div className="trans-type">{detail.type}</div>}
+                  {editTrans && (
+                    <div className="trans-type">
+                      <form
+                        onSubmit={(e) => {
+                          handleSubmitEditTypeTrans(e, detail.key);
+                        }}
+                      >
+                        {" "}
+                        <input
+                          value={editType}
+                          onChange={(e) => {
+                            setEditType(e.target.value);
+                          }}
+                        />
+                      </form>
+                    </div>
+                  )}
+
                   {detail.key === idCheck && editHistory && (
                     <div>
                       <EditIcon
                         onClick={() => {
                           handleEdit(detail.key);
+                          setEditType(detail.type);
                         }}
                       />
                       <DeleteIcon
@@ -77,6 +103,9 @@ const mapReducerToProps = (dispatch) => {
     },
     deleteStore: (id) => {
       dispatch({ type: "DELETE", key: id });
+    },
+    editTypeStore: (id, type) => {
+      dispatch({ type: "EDIT_TYPE", key: id, value: type });
     },
   };
 };
