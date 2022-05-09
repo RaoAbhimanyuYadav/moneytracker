@@ -28,7 +28,8 @@ const reducer = (state = initailValue, action) => {
     }
     const updatedState = {
       ...state,
-      transactions: state.transactions.concat(action.transaction),
+      transactions: [action.transaction, ...state.transactions],
+      // transactions: state.transactions.concat(action.transaction)
       amount: +storedAmount.toFixed(2),
       income: +newIncome.toFixed(2),
       expense: +newExpense.toFixed(2),

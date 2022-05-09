@@ -8,7 +8,7 @@ const AddTrans = (props) => {
   const [type, setType] = useState("");
   const [color, setColor] = useState("credit-color");
   const handleText = (e) => {
-    setType(e.target.value.trim());
+    setType(e.target.value);
   };
   const handleAmount = (e) => {
     let enteredAmount = +e.target.value;
@@ -22,8 +22,10 @@ const AddTrans = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const key = new Date();
+    if (amount === "0" || amount === "-0") {
+      return alert(`transition amount can't be zero`);
+    }
     const transaction = { color, type, amount: +amount, key };
-
     setAmount("");
     setType("");
     props.addTrans(transaction);
