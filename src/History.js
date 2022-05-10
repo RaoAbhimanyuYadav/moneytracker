@@ -13,10 +13,12 @@ const History = (props) => {
   const [idCheck, setIdCheck] = useState(null);
   const [editTrans, setEditTrans] = useState(false);
   const [editType, setEditType] = useState("");
+  const [editID, setEditID] = useState(null);
   const handleEdit = (id) => {
     setEditTrans(true);
   };
   const handleSubmitEditTypeTrans = (e, key) => {
+    setEditID(null);
     e.preventDefault();
     props.editTypeStore(key, editType);
     setEditTrans(false);
@@ -46,8 +48,8 @@ const History = (props) => {
                     setEditHistory(false);
                   }}
                 >
-                  {!editTrans && <div className="trans-type">{detail.type}</div>}
-                  {editTrans && (
+                  {detail.key !== editID && <div className="trans-type">{detail.type}</div>}
+                  {detail.key === editID && editTrans && (
                     <div className="trans-type">
                       <form
                         onSubmit={(e) => {
@@ -70,6 +72,7 @@ const History = (props) => {
                       <EditIcon
                         onClick={() => {
                           handleEdit(detail.key);
+                          setEditID(detail.key);
                           setEditType(detail.type);
                         }}
                       />
